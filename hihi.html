@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thực hành - Tạo menu dọc</title>
+    <style>
+        /* 1. Reset font chữ và margin/padding mặc định */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+
+        /* Reset cho danh sách ul, li */
+        #menu ul {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* 2. Định dạng cho các phần tử danh sách li */
+        #menu li {
+            list-style: none;        /* Bỏ chấm tròn đầu dòng (bullet) */
+            position: relative;     /* Cố định gốc tọa độ để danh sách con căn chỉnh theo */
+            width: 120px;           /* Chiều rộng khung (kết hợp padding 20px thành chiều rộng vừa đủ) */
+            height: 30px;           /* Cố định chiều cao */
+            padding: 0 20px;        /* Căn lề trái và phải cho nội dung bên trong */
+            background-color: black;/* Đổi màu nền sang màu đen */
+            line-height: 30px;      /* Chiều cao dòng bằng height để căn giữa chữ theo chiều dọc */
+            cursor: pointer;        /* Chuyển con trỏ chuột sang hình bàn tay */
+            border-bottom: 1px solid #333; /* Đường viền mỏng phân cách các mục */
+        }
+
+        /* 3. Định dạng liên kết (thẻ a) bên trong các li */
+        #menu a {
+            text-decoration: none;  /* Bỏ gạch chân dưới liên kết */
+            color: white;           /* Đổi màu chữ sang màu trắng */
+            display: block;         /* Cho phép bấm vào toàn bộ vùng của mục */
+        }
+
+        /* 4. Hiệu ứng hover khi đưa chuột qua thẻ li */
+        #menu li:hover {
+            background-color: #333; /* Đổi màu nền xám tối khi di chuột vào */
+        }
+
+        /* 5. Định dạng cho danh sách con (Submenu) */
+        #menu ul ul {
+            position: absolute;    /* Cố định vị trí của danh sách con so với li cha */
+            top: 0;                /* Căn đỉnh của menu con bằng đỉnh của mục cha */
+            left: 160px;           /* Đẩy menu con sang bên phải (width 120px + padding-left 20px + padding-right 20px = 160px) */
+            visibility: hidden;    /* Ẩn danh sách con theo mặc định */
+        }
+
+        /* 6. Hiển thị danh sách con khi hover vào thẻ li chứa nó */
+        #menu li:hover > ul {
+            visibility: visible;   /* Hiện danh sách con tương ứng khi rê chuột vào */
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Cấu trúc HTML của Menu dọc -->
+    <div id="menu">
+        <ul>
+            <li><a href="#">Trang chủ</a></li>
+            <li>
+                <a href="#">Sản phẩm</a>
+                <!-- Danh sách con lồng bên trong -->
+                <ul>
+                    <li><a href="#">Điện thoại</a></li>
+                    <li><a href="#">Máy tính bảng</a></li>
+                    <li><a href="#">Laptop</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">Dịch vụ</a>
+                <!-- Danh sách con lồng bên trong -->
+                <ul>
+                    <li><a href="#">Bảo hành</a></li>
+                    <li><a href="#">Sửa chữa</a></li>
+                </ul>
+            </li>
+            <li><a href="#">Liên hệ</a></li>
+        </ul>
+    </div>
+
+</body>
+</html>
