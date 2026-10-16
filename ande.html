@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thực hành - Tạo menu ngang</title>
+    <style>
+        /* 1. Đặt font chữ chung và xóa margin/padding mặc định */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+
+        /* 2. Cấu hình phân vùng khung menu (#menu) */
+        #menu {
+            height: 40px;
+            background-color: #333;
+            border-radius: 4px;
+        }
+
+        /* Reset margin và padding cho thẻ ul */
+        #menu ul {
+            margin: 0;
+            padding: 0;
+            list-style: none; /* Bỏ chấm tròn đầu dòng */
+        }
+
+        /* 3. Đặt các mục chọn danh sách (li) nằm trên cùng một hàng ngang */
+        #menu > ul > li {
+            float: left;        /* Cho các mục cha xếp hàng ngang */
+            position: relative; /* Tạo gốc tọa độ cho menu con căn chỉnh theo */
+        }
+
+        /* 4. Định dạng các liên kết (thẻ a) trong trình đơn */
+        #menu a {
+            display: block;
+            width: 120px;
+            height: 40px;
+            line-height: 40px;     /* Căn giữa chữ theo chiều dọc */
+            text-align: center;    /* Căn giữa chữ theo chiều ngang */
+            text-decoration: none; /* Bỏ gạch chân dưới liên kết */
+            color: white;          /* Màu chữ trắng */
+            font-size: 15px;
+        }
+
+        /* 5. Chuyển màu nền sang màu đỏ khi rê chuột qua liên kết */
+        #menu li:hover > a {
+            background-color: red;
+        }
+
+        /* 6. Định dạng vị trí cho danh sách con (Submenu) và ẩn mặc định */
+        #menu ul ul {
+            position: absolute;  /* Cố định vị trí so với thẻ li cha */
+            top: 40px;           /* Đẩy menu con thả xuống ngay dưới thanh menu cha */
+            left: 0;             /* Căn lề trái bằng với mục cha */
+            background-color: #444;
+            visibility: hidden;  /* Ẩn trình đơn con theo mặc định */
+            z-index: 100;
+        }
+
+        /* Định dạng các mục bên trong menu con */
+        #menu ul ul li {
+            position: relative;
+        }
+
+        #menu ul ul a {
+            text-align: left;
+            padding-left: 15px;
+            width: 135px; /* Điều chỉnh chiều rộng vừa văn bản menu con */
+            border-bottom: 1px solid #555;
+        }
+
+        /* 7. Hiển thị trình đơn con khi đưa con trỏ chuột qua mục chọn cha */
+        #menu li:hover > ul {
+            visibility: visible; /* Hiện menu con tương ứng khi hover */
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Cấu trúc HTML của Menu ngang -->
+    <div id="menu">
+        <ul>
+            <li><a href="#">Trang chủ</a></li>
+            <li>
+                <a href="#">Sản phẩm</a>
+                <!-- Trình đơn con (Dropdown) -->
+                <ul>
+                    <li><a href="#">Điện thoại</a></li>
+                    <li><a href="#">Máy tính bảng</a></li>
+                    <li><a href="#">Laptop</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">Dịch vụ</a>
+                <!-- Trình đơn con (Dropdown) -->
+                <ul>
+                    <li><a href="#">Bảo hành</a></li>
+                    <li><a href="#">Sửa chữa</a></li>
+                </ul>
+            </li>
+            <li><a href="#">Liên hệ</a></li>
+        </ul>
+    </div>
+
+</body>
+</html>
